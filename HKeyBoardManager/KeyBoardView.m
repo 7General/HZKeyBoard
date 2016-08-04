@@ -61,7 +61,7 @@
  */
 -(NSMutableArray *)numberArray {
     if (!_numberArray) {
-        _numberArray = @[@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@" ",@"0",@"删除"].mutableCopy;
+        _numberArray = @[@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"切换",@"0",@"删除"].mutableCopy;
     }
     return _numberArray;
 }
@@ -183,6 +183,10 @@
             case TextFiledSecond:
             {
                 if (![self.ConnectStrSecond isEqualToString:@""]) {
+                    //                    self.OtherJumpStr = [self.OtherConnectStr substringToIndex:[self.OtherConnectStr length]-1];
+                    //                    self.OtherConnectStr = self.OtherJumpStr;
+                    //
+                    //                    [self runOtherDelegateFromButtonTag:self.OtherJumpStr andButtonTage:sender.tag];
                     
                     NSArray * tempArry = [[self.ConnectStrSecond substringWithRange:NSMakeRange(0, self.ConnectStrSecond.length - 1)] componentsSeparatedByString:@","];
                     /**截取非最后一位*/
@@ -291,9 +295,9 @@
                 self.JumpStr = [[self.ConnectStr stringByAppendingString:baseStr] stringByAppendingString:@","];
                 self.ConnectStr = self.JumpStr;
                 self.JumpStr = [self.JumpStr substringWithRange:NSMakeRange(0, self.JumpStr.length - 1)];
-//                if (self.DeleteDone && !IsStrEmpty(self.JumpStr)) {
-//                    self.JumpStr = [NSString stringWithFormat:@",%@",self.JumpStr];
-//                }
+                if (self.DeleteDone) {
+                    self.JumpStr = [NSString stringWithFormat:@",%@",self.JumpStr];
+                }
                 
                 [self runDelegateFromButtonTag:self.JumpStr andButtonTage:sender.tag];
             }
@@ -304,9 +308,9 @@
                 self.JumpStrSecond = [[self.ConnectStrSecond stringByAppendingString:baseStr] stringByAppendingString:@","];
                 self.ConnectStrSecond = self.JumpStrSecond;
                 self.JumpStrSecond = [self.JumpStrSecond substringWithRange:NSMakeRange(0, self.JumpStrSecond.length - 1)];
-//                if (self.DeleteDoneSecond) {
-//                    self.JumpStrSecond = [NSString stringWithFormat:@",%@",self.JumpStrSecond];
-//                }
+                if (self.DeleteDoneSecond) {
+                    self.JumpStrSecond = [NSString stringWithFormat:@",%@",self.JumpStrSecond];
+                }
                 [self runSecondDelegateFromButtonTag:self.JumpStrSecond andButtonTage:sender.tag];
             }
                 break;
@@ -317,9 +321,9 @@
                 self.JumpStrThird = [[self.ConnectStrThird stringByAppendingString:baseStr] stringByAppendingString:@","];
                 self.ConnectStrThird = self.JumpStrThird;
                 self.JumpStrThird = [self.JumpStrThird substringWithRange:NSMakeRange(0, self.JumpStrThird.length - 1)];
-//                if (self.DeleteDoneThird) {
-//                    self.JumpStrThird = [NSString stringWithFormat:@",%@",self.JumpStrThird];
-//                }
+                if (self.DeleteDoneThird) {
+                    self.JumpStrThird = [NSString stringWithFormat:@",%@",self.JumpStrThird];
+                }
                 [self runThirdDelegateFromButtonTag:self.JumpStrThird andButtonTage:sender.tag];
             }
                 break;
@@ -329,9 +333,9 @@
                 self.JumpStrFourth = [[self.ConnectStrFourth stringByAppendingString:baseStr] stringByAppendingString:@","];
                 self.ConnectStrFourth = self.JumpStrFourth;
                 self.JumpStrFourth = [self.JumpStrFourth substringWithRange:NSMakeRange(0, self.JumpStrFourth.length - 1)];
-//                if (self.DeleteDoneFourth) {
-//                    self.JumpStrFourth = [NSString stringWithFormat:@",%@",self.JumpStrFourth];
-//                }
+                if (self.DeleteDoneFourth) {
+                    self.JumpStrFourth = [NSString stringWithFormat:@",%@",self.JumpStrFourth];
+                }
                 [self runFourthDelegateFromButtonTag:self.JumpStrFourth andButtonTage:sender.tag];
             }
                 break;
